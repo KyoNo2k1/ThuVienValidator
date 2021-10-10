@@ -1,0 +1,23 @@
+<script src="./validator.js"></script>
+    <script>
+        //Validator
+        Validator({
+            form: '#id_form',
+            formGroupSelector: '.class tung form-group',
+            errorSelector: '.form-message',
+            rules:[
+                Validator.isRequired('#id_email'),
+                Validator.isEmail('#id_email', 'loi xuat ra'),
+                Validator.minLength('#id_password', 6),
+                Validator.isRequired('#id_repassword'),
+                Validator.isConfirm('#id_repassword', function(){
+                    return document.querySelector('#form-1 #password1').value;
+                }, 'loi xuat ra'),
+                Validator.isRequired('input[name="gender"]'),
+            ],
+            onSubmit: function(data){
+                //call API
+                console.log(data);
+            }
+        });
+    </script>
